@@ -1,30 +1,41 @@
 import unittest
 from utils import parse_input, parse_input_file
-from tests import parser_testdata
 
 
 
-class TestInputStringParser(unittest.TestCase):
+class TestParser(unittest.TestCase):
 
-    def setUp(self) -> None:
-        self.test_data = [parser_testdata.TEST_DATA_STRING_1, parser_testdata.TEST_DATA_STRING_2]
-        self.bad_data = parser_testdata.TEST_DATA_STRING_BAD
+    def test_parse_input_string(self):
+        input_data = '''
+55 14 25 52 21
 
-    def test_parse_input(self):
-        for idata in self.test_data:
-            with self.subTest(idata=idata):
-                parsed_data = parse_input(idata.input)
-                self.assertEqual(idata.output, parsed_data)
+44 31 11 53 43
 
+24 13 45 12 34
 
-class TestInputFileParser(unittest.TestCase):
+42 22 43 32 41
 
-    def setUp(self) -> None:
-        self.test_data = [parser_testdata.TEST_DATA_FILE_1, parser_testdata.TEST_DATA_FILE_2]
+51 23 33 54 15
+'''
+        expected_result = [
+            [(5,5), (1,4), (2,5), (5,2), (2,1)],
+            [(4,4), (3,1), (1,1), (5,3), (4,3)],
+            [(2,4), (1,3), (4,5), (1,2), (3,4)],
+            [(4,2), (2,2), (4,3), (3,2), (4,1)],
+            [(5,1), (2,3), (3,3), (5,4), (1,5)],
+        ]
+        parsed_data = parse_input(input_data)
+        self.assertEqual(expected_result, parsed_data)
 
-    def test_parse_input(self):
-        for idata in self.test_data:
-            with self.subTest(idata=idata):
-                with open(idata.input) as f:
-                    parsed_data = parse_input_file(f)
-                    self.assertEqual(idata.output, parsed_data)
+    def test_parse_input_file(self):
+        input_file = "inputdata.txt"
+        expected_result = [
+            [(5, 5), (1, 4), (2, 5), (5, 2), (2, 1)],
+            [(4, 4), (3, 1), (1, 1), (5, 3), (4, 3)],
+            [(2, 4), (1, 3), (4, 5), (1, 2), (3, 4)],
+            [(4, 2), (2, 2), (4, 3), (3, 2), (4, 1)],
+            [(5, 1), (2, 3), (3, 3), (5, 4), (1, 5)],
+        ]
+        with open(input_file) as f:
+            parsed_data = parse_input_file(f)
+            self.assertEqual(expected_result, parsed_data)
