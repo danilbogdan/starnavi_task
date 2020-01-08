@@ -22,7 +22,7 @@ def parse_input_file(f: IO, delimiter: str = ' ') -> List:
 
 
 def serialize_treasure_clues(clues: List[Tuple[int, int]]) -> str:
-    return " ".join([f"{col}{row}" for col, row in clues])
+    return " ".join([f"{row}{col}" for row, col in clues])
 
 
 def get_item(clue: Tuple[int, int], map_arr: List[List[Tuple[int, int]]]) -> Tuple[int, int]:
