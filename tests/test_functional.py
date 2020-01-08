@@ -13,7 +13,7 @@ class TestFunctionalTreasureHunt(unittest.TestCase):
         expected_result = (2, 1)
         self.assertEqual(expected_result, get_item(test_clue, test_arr))
 
-    def test_find_treasure(self):
+    def test_find_treasure_success(self):
         test_arr = [
             [(5, 5), (1, 4), (2, 5), (5, 2), (2, 1)],
             [(4, 4), (3, 1), (1, 1), (5, 3), (4, 3)],
@@ -23,3 +23,13 @@ class TestFunctionalTreasureHunt(unittest.TestCase):
         ]
         expected_result = [(1,1), (5,5), (1,5), (2,1), (4,4), (3,2), (1,3), (2,5), (4,3)]
         self.assertEqual(expected_result, find_treasure(test_arr))
+
+    def test_find_treasure_fails(self):
+        test_arr = [
+            [(5, 5), (1, 4), (2, 5), (5, 2), (2, 1)],
+            [(4, 4), (3, 1), (1, 1), (5, 3), (4, 3)],
+            [(2, 4), (1, 3), (4, 5), (1, 2), (3, 4)],
+            [(4, 2), (2, 2), (4, 4), (3, 2), (4, 1)],
+            [(5, 1), (2, 3), (3, 3), (5, 4), (1, 5)],
+        ]
+        self.assertRaises(RecursionError, find_treasure, test_arr)
