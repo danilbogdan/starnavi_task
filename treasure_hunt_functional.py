@@ -1,10 +1,13 @@
 from typing import Tuple, List
-
+from exceptions import ItemNotFound
 
 
 def get_item(clue: Tuple[int, int], map_arr: List[List[Tuple[int, int]]]) -> Tuple[int, int]:
     row, col = clue
-    return map_arr[row - 1][col - 1]
+    try:
+        return map_arr[row - 1][col - 1]
+    except IndexError:
+        raise ItemNotFound(f'({row}, {col})')
 
 
 def get_map_size(map_arr: List[List[Tuple[int, int]]]) -> int:

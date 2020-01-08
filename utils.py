@@ -1,5 +1,6 @@
 from exceptions import ParseError
-from typing import List, IO
+from typing import List, IO, Tuple
+
 
 def parse_input(input_string: str, delimiter: str = ' ') -> List:
     try:
@@ -16,3 +17,7 @@ def parse_input(input_string: str, delimiter: str = ' ') -> List:
 def parse_input_file(f: IO, delimiter: str = ' ') -> List:
     text = f.read()
     return parse_input(text, delimiter)
+
+
+def serialize_treasure_clues(clues: List[Tuple[int, int]]) -> str:
+    return " ".join([f"{col}{row}" for col, row in clues])

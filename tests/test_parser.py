@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from utils import parse_input, parse_input_file
+from utils import parse_input, parse_input_file, serialize_treasure_clues
 
 
 class TestParser(unittest.TestCase):
@@ -43,3 +43,8 @@ class TestParser(unittest.TestCase):
         with open(input_file) as f:
             parsed_data = parse_input_file(f)
             self.assertEqual(expected_result, parsed_data)
+
+    def test_serialize_treasure_clues(self):
+        clues = [(1, 1), (5, 5), (1, 5), (2, 1), (4, 4), (3, 2), (1, 3), (2, 5), (4, 3)]
+        expected_result = "11 55 15 21 44 32 13 25 43"
+        self.assertEqual(expected_result, serialize_treasure_clues(clues))
