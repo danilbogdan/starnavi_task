@@ -1,5 +1,8 @@
 # Treasure finder
-
+Application has two implementations: functional and object-oriented.
+Argument `-r` applies functional approach.  
+Without `-r` the object-oriented implementation will be used.  
+There are two ways of map input: through stdin or via file. Use `-f` to specify path to map file. 
 ## 1. Usage
 ### 1.1 Setup virtual environment using pipenv
 ```
@@ -26,10 +29,6 @@ optional arguments:
   -f FILE, --file FILE  read input from file
   -r, --recursive       Weather to apply recursive implementation or not
 ```
-Application has two implementations: functional and object-oriented.
-Argument `-r` applies functional approach.  
-Without `-r` the object-oriented implementation will be used.  
-There are two ways of map input: through stdin or via file. Use `-f` to specify path to map file. 
 
 ## 2. Map format
 Input example
