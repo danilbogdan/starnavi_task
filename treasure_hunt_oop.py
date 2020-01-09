@@ -18,9 +18,12 @@ class TreasureMapComponent(ABC):
     def __getitem__(self, item: Any):
         pass
 
-    @classmethod
     @abstractmethod
-    def _split_string(cls, component_str: str):
+    def __len__(self):
+        pass
+
+    @abstractmethod
+    def __eq__(self, other: 'Array'):
         pass
 
 
