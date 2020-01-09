@@ -1,4 +1,4 @@
-from treasure_hunt_functional import get_item, find_treasure, parse_input, parse_input_file, serialize_treasure_clues
+from treasure_hunt_functional import get_item, find_treasure, parse_input, serialize_treasure_clues
 from exceptions import ValidationError, ItemNotFound
 import os
 import unittest
@@ -41,7 +41,7 @@ class TestParser(unittest.TestCase):
             [(5, 1), (2, 3), (3, 3), (5, 4), (1, 5)],
         ]
         with open(input_file) as f:
-            parsed_data = parse_input_file(f)
+            parsed_data = parse_input(f.read())
             self.assertEqual(expected_result, parsed_data)
 
     def test_serialize_treasure_clues(self):

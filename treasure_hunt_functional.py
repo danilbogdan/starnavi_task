@@ -15,12 +15,6 @@ def parse_input(input_string: str, delimiter: str = ' ') -> List:
     except Exception as e:
         raise ParseError(f"Can't parse data: {str(e)}")
 
-
-def parse_input_file(f: IO, delimiter: str = ' ') -> List:
-    text = f.read()
-    return parse_input(text, delimiter)
-
-
 def serialize_treasure_clues(clues: List[Tuple[int, int]]) -> str:
     return " ".join([f"{row}{col}" for row, col in clues])
 

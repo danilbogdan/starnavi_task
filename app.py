@@ -1,7 +1,6 @@
 import argparse
-from utils import parse_input, parse_input_file, serialize_treasure_clues
-from treasure_hunt_functional import find_treasure
-from treasure_hunt_oop import TreasureMap
+from treasure_hunt_functional import find_treasure, serialize_treasure_clues, parse_input
+from treasure_hunt_oop import TreasureMapResolver
 
 
 
@@ -9,7 +8,7 @@ def start(fp=None, recursive=False):
 
     if fp:
         with open(fp) as f:
-            data = parse_input_file(f)
+            data = f.read()
     else:
         print('Put treasure map by row:')
         lines = []
@@ -19,11 +18,14 @@ def start(fp=None, recursive=False):
                 lines.append(line)
             else:
                 break
-        data = parse_input('\n'.join(lines))
+        data = '\n'.join(lines)
 
-    method = find_treasure if recursive else TreasureMap(data).find_treasure
+    if recursive:
+        result = serialize_treasure_clues(find_treasure(parse_input(data)))
+    else:
+        result = TreasureMapResolver(data).find_treasure()
 
-    print(serialize_treasure_clues(method(data)))
+    print(result)
 
 
 if __name__ == "__main__":
