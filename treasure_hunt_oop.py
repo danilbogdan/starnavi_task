@@ -23,7 +23,7 @@ class TreasureMapComponent(ABC):
         pass
 
     @abstractmethod
-    def __eq__(self, other: 'Array'):
+    def __eq__(self, other: 'TreasureMapComponent'):
         pass
 
 
