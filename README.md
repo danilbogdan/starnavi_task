@@ -1,6 +1,18 @@
 # Treasure finder
 
-## 1. Usage 
+## 1. Usage
+### 1.1 Setup virtual environment using pipenv
+```
+$: pipenv update
+Running $ pipenv lock then $ pipenv sync.
+Locking [dev-packages] dependencies...
+Locking [packages] dependencies...
+✔ Success! 
+Updated Pipfile.lock (201504)!
+Installing dependencies from Pipfile.lock (201504)...
+  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 11/11 — 00:00:02
+
+```
 ```bash
 $: python app.py -h
 
